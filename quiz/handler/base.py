@@ -64,6 +64,8 @@ def route_args(func):
     def wrapped(self, **kwargs):
         return func(self, **{kwargs, self.request.match_info})
 
+    return wrapped
+
 
 def get_args(func):
     def wrapped(self, **kwargs):
