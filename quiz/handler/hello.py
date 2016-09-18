@@ -12,7 +12,8 @@ class Hello(base.Handler):
 @app.route('/quiz', 'quiz')
 class Hello(base.Handler):
     @base.get_args
-    async def get(self):
+    async def get(self, quiz_id):
+        # @todo 处理一下读第几次quiz的问题
         if False:
             await self.render('notlogin.html')
         else:
