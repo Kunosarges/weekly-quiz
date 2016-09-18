@@ -2,7 +2,7 @@ import asyncio
 from aiohttp import web
 
 from quiz import template
-from quiz.model import session
+#from quiz.model import session
 
 
 class Handler(web.View):
@@ -69,13 +69,13 @@ def route_args(func):
 
 def get_args(func):
     def wrapped(self, **kwargs):
-        return func(self, **{kwargs, self.request.GET})
+        return func(self, **kwargs, **self.request.GET)
 
     return wrapped
 
 
 def post_args(coroutine):
     async def wrapped(self, **kwargs):
-        return await coroutine(self, **{kwargs, await self.request.post()})
+        return await coroutine(self, **kwargs, **await self.request.post())
 
     return wrapped

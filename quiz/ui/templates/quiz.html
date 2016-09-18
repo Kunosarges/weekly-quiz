@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+</head>
+<body>
+{% for i in questions %}
+<li>{{ i }}<br>
+    {% if len(questions[i])>0 %}
+    {% for n in range(len(questions[i])) %}
+    {{ chr(65+n) }}:{{ questions[i][n] }}
+    {% endfor %}
+    {% else %}
+    empty
+    {% endif %}</li>
+{% endfor %}
+</body>
+</html>

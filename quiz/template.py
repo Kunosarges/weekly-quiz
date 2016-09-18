@@ -15,5 +15,7 @@ class Environment(jinja2.Environment):
             autoescape=True,
             trim_blocks=True,
             undefined=Undefined)
+        self.globals['len'] = len
+        self.globals['chr'] = chr
 
         globals()[self.__class__.__name__] = lambda: self
